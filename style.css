@@ -1,0 +1,277 @@
+@font-face {
+    font-family: font1;
+    src: url(./NeueMachina-Light.woff2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: font1;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+#main {
+    height: 100%;
+    width: 100%;
+}
+
+
+.h1 {
+    margin-top: 20px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 35px;
+    font-weight: 700;
+    color: black;
+
+    background: rgba(255, 0, 140, 0.212);
+
+    border: 1px solid rgb(255, 0, 140);
+
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-bottom: 30px;
+}
+
+
+.h1 .dot1 {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: black;
+    z-index: 2;
+}
+
+.h1 .tl1 {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.h1 .tr1 {
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.h1 .bl1 {
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+}
+
+.h1 .br1 {
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+}
+
+
+h1 {
+    margin-left: 50px;
+    margin-bottom: 25px;
+    margin-top: 30px;
+    font-size: 75px;
+    text-decoration: underline;
+}
+
+
+
+
+#into_point {
+    margin-left: 120px;
+    margin-right: 120px;
+    font-size: 35px;
+}
+
+#into_point2 {
+    color: blue;
+    margin-top: 25px;
+    margin-left: 220px;
+    font-size: 30px;
+    text-decoration: wavy;
+
+}
+
+
+#intro_div {
+
+    width: calc(100% - 200px);
+    height: 400px;
+    margin: 50px 100px;
+    position: relative;
+
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: rgba(222, 222, 247, 0.404);
+}
+
+#producer,
+#consumer {
+    height: 100px;
+    width: 250px;
+    background-color: green;
+    font-size: 35px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#data_div {
+    height: 120px;
+    width: 300px;
+    background: linear-gradient(to right bottom, green 20%, lightgreen);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 20px;
+    color: black;
+
+
+}
+
+#producer {
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}
+
+
+#consumer {
+    position: absolute;
+    bottom: 20px;
+    right: 200px;
+}
+
+#arrow1,
+#arrow2 {
+    height: 120px;
+    width: 250px;
+    background-color: #e75757;
+    position: absolute;
+    transform: rotate(30deg);
+    clip-path: polygon(0 45%, 85% 45%, 85% 35%, 100% 50%, 85% 65%, 85% 55%, 0 55%);
+}
+
+
+#arrow1 {
+    left: 450px;
+    top: 100px;
+}
+
+#arrow2 {
+
+
+    right: 450px;
+    bottom: 100px;
+}
+
+.box {
+    height: 70px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+#syn_div {
+    width: calc(100% - 200px);
+    height: 200px;
+    background-color: rgba(222, 222, 247, 0.404);
+    margin: 25px 100px;
+    padding: 25px 100px;
+    border-radius: 25px;
+    border: 1px solid black;
+    letter-spacing: 2px;
+    margin-bottom: 200px;
+
+}
+
+
+#sema_para {
+    margin-left: 120px;
+    font-size: 35px;
+}
+
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: 200px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+
+
+td,
+th {
+    border: 1px solid black;
+    margin: 10px 20px;
+    font-size: 30px;
+
+    padding: 10px;
+}
+
+th {
+    background-color: lightpink;
+}
+
+#process_div {
+
+    width: calc(100% - 200px);
+    height: 400px;
+    margin: 50px 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+margin-bottom: 100px;
+}
+
+#p_div1 {
+    width: 50%;
+    height: 80%;
+
+}
+
+#p_div2 {
+    width: 50%;
+    height: 100%;
+    background-color: rgba(222, 222, 247, 0.404);
+    border-radius: 25px;
+    border: 1px solid black;
+    padding-left: 20px;
+
+}
+
+#bottom {
+    margin-top: 200px;
+    height: 45px;
+    width: 100%;
+    background-color: rgb(19, 24, 46);
+    color: white;
+    font-weight: 100;
+    letter-spacing: 1px;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+}
+

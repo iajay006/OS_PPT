@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producer–Consumer Problem Using Semaphores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main">
+        <h2>
+            <span class="h1">
+                <b>Producer–Consumer Problem Using Semaphores</b>
+                <span class="dot1 tl1"></span>
+                <span class="dot1 tr1"></span>
+                <span class="dot1 bl1"></span>
+                <span class="dot1 br1"></span>
+            </span>
+        </h2>
+        <h1>Intoduction</h1>
+        <ul id="into_point">
+            <li>The Producer–Consumer Problem is a classic synchronization problem in Operating Systems.</li>
+            <li>It deals with multiple processes sharing a common buffer.</li>
+            <li>The producer creates data and puts it into the buffer.</li>
+            <li>The consumer takes data from the buffer and processes it.</li>
+            <li>Proper synchronization is required to avoid race conditions.</li>
+        </ul>
+        <div id="intro_div">
+            <div id="producer">
+                <h3>Producer</h3>
+            </div>
+            <div id="arrow1"></div>
+            <div id="arrow2"></div>
+            <div id="data_div">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <h3>Data Item</h3>
+            </div>
+            <div id="consumer">
+                <h3>Consumer</h3>
+            </div>
+        </div>
+        <h1>Why Synchronization is Needed</h1>
+        <ul id="into_point">
+            <li>If the producer adds data when the buffer is full, data may be lost.</li>
+            <li>If the consumer removes data when the buffer is empty, it causes errors.</li>
+            <li>Semaphores are used to control access and maintain synchronization.</li>
+        </ul>
+
+        <ul id="into_point2">
+            <li><b>wait(S):</b> Decreases the semaphore value by 1. If the value is ≤0, the process waits.</li>
+            <li><b>signal(S):</b> Increases the semaphore value by 1, potentially unblocking waiting processes.</li>
+        </ul>
+
+        <div id="syn_div">
+            <h3><i>wait(S){<br><span style="padding-left: 25px;">while(S <= 0); // busy waiting<br>S--; </span><br>}
+                    <br><span style="padding-left: 25px;">signal(S){<br>S++;</span><br>}</i>
+            </h3>
+        </div>
+
+
+
+        <h1>Semaphores (Brief Overview) & their Variables</h1>
+        <p id="sema_para">A semaphore is a synchronization tool used to manage access to shared resources. <br>
+            <b>Types of Semaphores Used:</b>
+        </p>
+
+        <ul id="into_point2">
+            <li><b>mutex(S)</b> → Ensures mutual exclusion</li>
+            <li><b>empty(E)</b> → Counts empty slots in buffer</li>
+            <li><b>full(F)</b> → Counts filled slots in buffer</li>
+        </ul>
+
+
+        <p id="into_point2"><b>Assume:</b> Buffer size = <b>N</b></p>
+        <table>
+            <tr>
+                <th>Semaphore</th>
+                <th>Initial Value</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>mutex</td>
+                <td>1</td>
+                <td>Protects critical section empty</td>
+            </tr>
+            <tr>
+                <td>empty</td>
+                <td>N</td>
+                <td>Number of empty slots</td>
+            </tr>
+            <tr>
+                <td>full</td>
+                <td>0</td>
+                <td>Number of filled slots</td>
+            </tr>
+        </table>
+
+
+
+        <h1>Producer Process (Logic)</h1>
+
+        <div id="process_div">
+            <div id="p_div1">
+                <ul id="into_point">
+                    <li>Wait if buffer is full</li>
+                    <li>Enter critical section</li>
+                    <li>Produce item</li>
+                    <li>Place item in buffer</li>
+                    <li>Exit critical section</li>
+                    <li>Signal consumer</li>
+                </ul>
+
+            </div>
+            <div id="p_div2">
+
+                <h3><i><span style="color: rgb(255, 0, 170);">void </span><span
+                            style="color: red;">producer</span>()<br>
+                        <span>{</span> <br>
+                        <span style="color: blue; padding-left: 50px;">while</span> (<span
+                            style="color: blue;">true</span>)<br>
+                        <span style="padding-left: 50px;">{</span> <br>
+                        <span style="padding-left: 100px;">produce(); // produce an item <br></span> <br>
+                        <span style="padding-left: 100px;">wait(empty); // wait if buffer is full <br></span>
+                        <span style="padding-left: 100px;">wait(mutex); // enter critical section <br></span> <br>
+                        <span style="padding-left: 100px;"> append(); // add item to buffer <br></span> <br>
+                        <span style="padding-left: 100px;">signal(mutex); // exit critical section <br></span>
+                        <span style="padding-left: 100px;">signal(full); // increment full slots <br></span>
+                        <span style="padding-left: 50px;">{</span> <br>
+                        }
+                    </i></h3>
+            </div>
+        </div>
+        <h1>Consumer Process (Logic)</h1>
+        <div id="process_div">
+            <div id="p_div1">
+                <ul id="into_point">
+                    <li>Wait if buffer is empty</li>
+                    <li>Enter critical section</li>
+                    <li>Remove item from buffer</li>
+                    <li>Consume item</li>
+                    <li>Exit critical section</li>
+                    <li>Signal produce</li>
+                </ul>
+
+            </div>
+            <div id="p_div2">
+
+                <h3><i><span style="color: rgb(255, 0, 170);">void </span><span
+                            style="color: red;">consumer</span>()<br>
+                        <span>{</span> <br>
+                        <span style="color: blue; padding-left: 50px;">while</span> (<span
+                            style="color: blue;">true</span>)<br>
+                        <span style="padding-left: 50px;">{</span> <br>
+                        <span style="padding-left: 100px;">wait(full); // wait if buffer is empty <br></span>
+                        <span style="padding-left: 100px;">wait(mutex); // enter critical section <br></span> <br>
+                        <span style="padding-left: 100px;">remove(); // remove item from buffer <br></span> <br>
+                        <span style="padding-left: 100px;">signal(mutex); // exit critical section <br></span>
+                        <span style="padding-left: 100px;">signal(empty); // increment empty slots <br></span> <br>
+                        <span style="padding-left: 100px;">consume(); // consume item <br></span>
+                        <span style="padding-left: 50px;">{</span> <br>
+                        }
+                    </i></h3>
+            </div>
+        </div>
+
+
+        <h1>Advantages</h1>
+
+        <ul id="into_point">
+            ✔ Prevents race conditions <br>
+            ✔ Ensures data consistency <br>
+            ✔ Efficient CPU utilization <br>
+            ✔ Widely used in real systems <br>
+        </ul>
+        <h1>Real-Life Examples</h1>
+
+        <ul id="into_point">
+            <li>Print queue (printer as consumer)</li>
+            <li>Producer apps generating logs, consumer storing them</li>
+            <li>Online streaming (buffering)</li>
+            <li>Operating System I/O management</li>
+        </ul>
+
+
+        <h1> Conclusion</h1>
+        <p id="into_point">The Producer–Consumer Problem shows how processes are synchronized while sharing a common
+            buffer. Semaphores
+            provide a safe and efficient way to control access and avoid race conditions. It is a fundamental
+            concept in
+            Operating Systems.
+        </p>
+        <div id="bottom">
+            <h4 id="h5">© 2026 Designed By @iajay006</h4>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
