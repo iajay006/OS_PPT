@@ -262,16 +262,40 @@ margin-bottom: 100px;
 
 #bottom {
     margin-top: 200px;
-    height: 45px;
+    height: 75px;
     width: 100%;
     background-color: rgb(19, 24, 46);
     color: white;
     font-weight: 100;
     letter-spacing: 1px;
     display: flex;
-    
+    font-size: 30px;
     align-items: center;
     justify-content: center;
 
 }
 
+#right_bar{
+    width: 75px;
+    height: 70px;
+
+    position:fixed;
+    top: 70%;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgb(255, 0, 200) , yellow);
+    border-radius: 0 50px;
+    box-shadow: -5px 5px 5px black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+.ri-pencil-fill{
+    color: blue;
+    font-size: 40px;
+    
+}
